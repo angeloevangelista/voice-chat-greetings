@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import fs from "fs";
 import crypto from "crypto";
-import DiscordJs from "discord.js";
+import DiscordJs, { VoiceChannel } from "discord.js";
 import textToMp3 from "./text-to-mp3";
 
 const client = new DiscordJs.Client({});
@@ -22,17 +22,23 @@ client.on("voiceStateUpdate", async (previousState, nextState) => {
     return;
   }
 
+  const newUser = previousState.channelID !== nextState.channelID;
+
+  if (!newUser) return;
+
   const voiceConnection = await nextState.channel?.join();
 
   const {
-    voice,
-    guild: { name: channelName },
     user: { username },
   } = nextState.member as DiscordJs.GuildMember;
 
+  const channel = client.channels.cache.get(
+    <string>nextState.channelID
+  ) as VoiceChannel;
+
   if (!fs.existsSync("./temp")) fs.mkdirSync("./temp");
 
-  const message = `${username} acabou de entrar no canal ${channelName}`;
+  const message = `${username} acabou de entrar no canal ${channel.name}`;
 
   const filenameCode = crypto.randomBytes(8).toString("hex");
 
