@@ -36,6 +36,8 @@ client.on("voiceStateUpdate", async (previousState, nextState) => {
     <string>nextState.channelID
   ) as VoiceChannel;
 
+  if (!channel) return;
+  
   if (!fs.existsSync("./temp")) fs.mkdirSync("./temp");
 
   const message = `${username} acabou de entrar no canal ${channel.name}`;
