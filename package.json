@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "start": "ts-node-dev src/index.ts"
   },
   "devDependencies": {
@@ -16,8 +17,8 @@
   },
   "dependencies": {
     "@discordjs/opus": "^0.7.0",
+    "axios": "^0.26.1",
     "discord.js": "12.0",
-    "ffmpeg-static": "^4.4.1",
-    "text-to-mp3": "^1.0.4"
+    "ffmpeg-static": "^4.4.1"
   }
 }
