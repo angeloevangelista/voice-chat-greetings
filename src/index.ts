@@ -1,6 +1,7 @@
 import "dotenv/config";
-
 import { Client } from "discord.js";
+
+import "./api";
 
 import { alertUserEntered } from "./events/alertUserEntered";
 
