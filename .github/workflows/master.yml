@@ -43,4 +43,4 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: Deploy to fly.io using flyctl
-        run: flyctl deploy --remote-only flyctl deploy --env BOT_TOKEN=${{ secrets.DOCKER_BOT_TOKEN }} --env TEMP_FOLDER=${{ secrets.DOCKER_TEMP_FOLDER }}
+        run: flyctl deploy --remote-only --env BOT_TOKEN=${{ secrets.DOCKER_BOT_TOKEN }} --env TEMP_FOLDER=${{ secrets.DOCKER_TEMP_FOLDER }}
